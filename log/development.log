@@ -1,0 +1,2066 @@
+  [1m[36m (20.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (10.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateTodos (20160501204754)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  CREATE TABLE "todos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "notes" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160501204754"]]
+  [1m[35m (10.0ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "todos" ("title", "notes", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "grocery shopping"], ["notes", "pickles, eggs, red onion"], ["created_at", "2016-05-01 20:49:46.601762"], ["updated_at", "2016-05-01 20:49:46.601762"]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "todos" ("title", "created_at", "updated_at") VALUES (?, ?, ?)  [["title", "wash the car"], ["created_at", "2016-05-01 20:49:46.613763"], ["updated_at", "2016-05-01 20:49:46.613763"]]
+  [1m[36m (3.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (1.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "todos" ("title", "notes", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "register kids for school"], ["notes", "Register Kira for Ruby Junior High and Caleb for Rails High School"], ["created_at", "2016-05-01 20:49:46.619763"], ["updated_at", "2016-05-01 20:49:46.619763"]]
+  [1m[35m (3.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "todos" ("title", "notes", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "check engine light"], ["notes", "The check engine light is on in the Tacoma"], ["created_at", "2016-05-01 20:49:46.624763"], ["updated_at", "2016-05-01 20:49:46.624763"]]
+  [1m[36m (7.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "todos" ("title", "notes", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "dog groomers"], ["notes", "Take Pinky and Redford to the groomers on Wednesday the 23rd"], ["created_at", "2016-05-01 20:49:46.633764"], ["updated_at", "2016-05-01 20:49:46.633764"]]
+  [1m[35m (4.0ms)[0m  commit transaction
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 17:52:22 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (0.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (9.0ms)
+Completed 500 Internal Server Error in 3046ms (ActiveRecord: 1.0ms)
+
+ActionView::Template::Error (TypeError: Object doesn't support this property or method):
+    2: <html>
+    3: <head>
+    4:   <title>TodoApp</title>
+    5:   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    6:   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    7:   <%= csrf_meta_tags %>
+    8: </head>
+  app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb__910172609_58045896'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (36.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (38.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (81.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 17:53:11 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (0.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 40ms (Views: 25.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/todos/new" for 127.0.0.1 at 2016-05-01 17:53:38 -0300
+Processing by TodosController#new as HTML
+  Rendered todos/_form.html.erb (148.0ms)
+  Rendered todos/new.html.erb within layouts/application (157.0ms)
+Completed 200 OK in 162ms (Views: 162.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/todos" for 127.0.0.1 at 2016-05-01 17:53:46 -0300
+Processing by TodosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GmsNZIjAffT08P2tBpb/ijtBWfjYul1ORIcE++0BVP9105i2D0czLfw14cTC+fwFo7RoNRuSkfp5IyKWidGhvQ==", "todo"=>{"title"=>"WTF", "notes"=>"LETS GO"}, "commit"=>"Create Todo"}
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "todos" ("title", "notes", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "WTF"], ["notes", "LETS GO"], ["created_at", "2016-05-01 20:53:46.795500"], ["updated_at", "2016-05-01 20:53:46.795500"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/todos/6
+Completed 302 Found in 33ms (ActiveRecord: 6.0ms)
+
+
+Started GET "/todos/6" for 127.0.0.1 at 2016-05-01 17:53:46 -0300
+Processing by TodosController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mTodo Load (1.0ms)[0m  SELECT  "todos".* FROM "todos" WHERE "todos"."id" = ? LIMIT 1  [["id", 6]]
+  Rendered todos/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 45ms (Views: 5.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/todos" for 127.0.0.1 at 2016-05-01 17:53:49 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 12ms (Views: 11.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/todos" for 127.0.0.1 at 2016-05-01 18:07:49 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (1.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 43ms (Views: 27.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/todos" for 127.0.0.1 at 2016-05-01 18:13:30 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (1.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/todos" for 127.0.0.1 at 2016-05-01 18:14:49 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (1.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 25ms (Views: 21.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/todos" for 127.0.0.1 at 2016-05-01 18:18:00 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (9.0ms)
+Completed 500 Internal Server Error in 3415ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (Current ExecJS runtime does't support ES5. Please install node.js.):
+    2: <html>
+    3: <head>
+    4:   <title>TodoApp</title>
+    5:   <%= stylesheet_link_tag "application" %>
+    6: </head>
+    7: <body>
+    8: 
+  app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb___958982644_53653080'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (7.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (45.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (50.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (104.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 18:28:19 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (1.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 30ms (Views: 27.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/stylesheets/application.css.sass.css" for 127.0.0.1 at 2016-05-01 18:28:20 -0300
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/application.css.sass.css"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (17.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (105.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (37.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (78.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 18:28:31 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 14ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/application.css.sas.css" for 127.0.0.1 at 2016-05-01 18:28:31 -0300
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/application.css.sas.css"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (79.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (35.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (79.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 18:28:49 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (0.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (5.0ms)
+Completed 500 Internal Server Error in 1997ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (Current ExecJS runtime does't support ES5. Please install node.js.):
+    2: <html>
+    3: <head>
+    4:   <title>TodoApp</title>
+    5:   <%= stylesheet_link_tag "application" %>
+    6: </head>
+    7: <body>
+    8: 
+  app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb___958982644_93658800'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (38.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (33.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (75.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 18:29:09 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 12ms (Views: 12.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/application.css.sass.css" for 127.0.0.1 at 2016-05-01 18:29:09 -0300
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/application.css.sass.css"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (64.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (34.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (78.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 18:30:38 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (0.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 23ms (Views: 22.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/stylesheets/application.css.sass.css" for 127.0.0.1 at 2016-05-01 18:30:38 -0300
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/application.css.sass.css"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (80.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (34.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (80.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 18:30:40 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (1.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 13ms (Views: 12.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/stylesheets/application.css.sass.css" for 127.0.0.1 at 2016-05-01 18:30:40 -0300
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/application.css.sass.css"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (82.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (40.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (81.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 18:30:52 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (1.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/stylesheets/application.css.sass.css" for 127.0.0.1 at 2016-05-01 18:30:52 -0300
+
+ActionController::RoutingError (No route matches [GET] "/stylesheets/application.css.sass.css"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (85.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (36.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (93.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 18:34:18 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (1.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (6.0ms)
+Completed 500 Internal Server Error in 146ms (ActiveRecord: 1.0ms)
+
+ActionView::Template::Error (Current ExecJS runtime does't support ES5. Please install node.js.):
+    2: <html>
+    3: <head>
+    4:   <title>TodoApp</title>
+    5:   <%= stylesheet_link_tag "application.css" %>
+    6: </head>
+    7: <body>
+    8: 
+  app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb___958982644_71993688'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (39.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (36.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (74.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 18:34:26 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (1.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (4.0ms)
+Completed 500 Internal Server Error in 130ms (ActiveRecord: 1.0ms)
+
+ActionView::Template::Error (Current ExecJS runtime does't support ES5. Please install node.js.):
+    2: <html>
+    3: <head>
+    4:   <title>TodoApp</title>
+    5:   <%= stylesheet_link_tag "application" %>
+    6: </head>
+    7: <body>
+    8: 
+  app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb___958982644_99019632'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (38.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (34.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (76.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 18:35:33 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (1.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (5.0ms)
+Completed 500 Internal Server Error in 148ms (ActiveRecord: 1.0ms)
+
+ActionView::Template::Error (Current ExecJS runtime does't support ES5. Please install node.js.):
+    2: <html>
+    3: <head>
+    4:   <title>TodoApp</title>
+    5:   <%= stylesheet_link_tag "application.css" %>
+    6: </head>
+    7: <body>
+    8: 
+  app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb___958982644_76713912'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (36.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (37.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (77.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 18:37:03 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (1.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 22ms (Views: 20.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2016-05-01 18:37:03 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 18:38:03 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (1.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 15ms (Views: 12.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2016-05-01 18:38:04 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 18:38:06 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (0.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 8ms (Views: 8.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2016-05-01 18:38:06 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 18:39:10 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 11ms (Views: 10.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 18:39:22 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (0.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 10ms (Views: 9.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2016-05-01 18:39:22 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 18:39:50 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 18:40:12 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (1.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 8ms (Views: 6.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2016-05-01 18:40:12 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 18:40:20 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 7ms (Views: 7.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2016-05-01 18:40:20 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 18:43:23 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (1.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 15ms (Views: 12.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2016-05-01 18:43:23 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 18:43:26 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2016-05-01 18:43:26 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 18:44:17 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (1.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 18:44:34 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (1.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2016-05-01 18:44:34 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 18:49:00 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (0.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (20.0ms)
+Completed 200 OK in 145ms (Views: 115.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2016-05-01 18:49:02 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:00:56 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 109ms (Views: 108.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:01:21 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (1.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:01:23 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (1.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 15ms (Views: 13.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:01:24 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (1.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 15ms (Views: 13.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:01:45 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 2795ms (Views: 2794.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:01:49 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (1.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 29ms (Views: 27.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:02:06 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (1.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 11ms (Views: 8.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:02:07 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (1.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 11ms (Views: 10.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:02:14 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (19.6ms)
+Completed 200 OK in 22ms (Views: 20.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:02:17 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (0.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 10ms (Views: 10.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:02:27 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 11ms (Views: 10.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:02:49 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (0.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 18ms (Views: 18.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:02:51 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 12ms (Views: 12.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:02:52 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (1.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 24ms (Views: 22.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:03:17 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (1.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 13ms (Views: 11.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:05:00 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (1.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 19ms (Views: 17.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/stylesheets/application.css" for 127.0.0.1 at 2016-05-01 19:05:00 -0300
+
+ActionController::RoutingError (No route matches [GET] "/assets/stylesheets/application.css"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (66.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (166.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (82.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (8.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (158.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:05:03 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 9ms (Views: 9.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/stylesheets/application.css" for 127.0.0.1 at 2016-05-01 19:05:03 -0300
+
+ActionController::RoutingError (No route matches [GET] "/assets/stylesheets/application.css"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (70.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (33.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (72.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:05:04 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (1.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 11ms (Views: 10.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/stylesheets/application.css" for 127.0.0.1 at 2016-05-01 19:05:05 -0300
+
+ActionController::RoutingError (No route matches [GET] "/assets/stylesheets/application.css"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (79.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (32.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (75.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:05:29 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 12ms (Views: 11.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/stylesheets/application.css" for 127.0.0.1 at 2016-05-01 19:05:29 -0300
+
+ActionController::RoutingError (No route matches [GET] "/assets/stylesheets/application.css"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (67.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (33.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (74.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:05:31 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (0.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/stylesheets/application.css" for 127.0.0.1 at 2016-05-01 19:05:32 -0300
+
+ActionController::RoutingError (No route matches [GET] "/assets/stylesheets/application.css"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (51.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (37.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (80.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:05:48 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 11ms (Views: 11.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/stylesheets/application.css" for 127.0.0.1 at 2016-05-01 19:05:48 -0300
+
+ActionController::RoutingError (No route matches [GET] "/assets/stylesheets/application.css"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (71.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (33.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (75.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:06:32 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (0.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (56.0ms)
+Completed 200 OK in 66ms (Views: 65.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/stylesheets/application.css" for 127.0.0.1 at 2016-05-01 19:06:32 -0300
+
+ActionController::RoutingError (No route matches [GET] "/assets/stylesheets/application.css"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (78.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (33.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (73.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:06:41 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 11ms (Views: 11.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/stylesheets/application.css" for 127.0.0.1 at 2016-05-01 19:06:42 -0300
+
+ActionController::RoutingError (No route matches [GET] "/assets/stylesheets/application.css"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (74.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (34.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (80.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:07:04 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (0.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/stylesheets/application.css" for 127.0.0.1 at 2016-05-01 19:07:04 -0300
+
+ActionController::RoutingError (No route matches [GET] "/assets/stylesheets/application.css"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (74.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (34.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (78.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:07:07 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/stylesheets/application.css" for 127.0.0.1 at 2016-05-01 19:07:07 -0300
+
+ActionController::RoutingError (No route matches [GET] "/assets/stylesheets/application.css"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (76.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (32.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (72.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:07:09 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (0.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 8ms (Views: 8.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/stylesheets/application.css" for 127.0.0.1 at 2016-05-01 19:07:09 -0300
+
+ActionController::RoutingError (No route matches [GET] "/assets/stylesheets/application.css"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (71.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (32.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (72.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:07:28 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 8ms (Views: 8.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2016-05-01 19:07:28 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:07:57 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (0.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (18.6ms)
+Completed 200 OK in 20ms (Views: 19.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/stylesheets/application.css" for 127.0.0.1 at 2016-05-01 19:07:57 -0300
+
+ActionController::RoutingError (No route matches [GET] "/assets/stylesheets/application.css"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (67.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (35.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (73.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:08:39 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (1.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 19ms (Views: 17.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2016-05-01 19:08:39 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:09:06 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (1.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 8ms (Views: 6.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2016-05-01 19:09:06 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:09:27 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 8ms (Views: 8.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2016-05-01 19:09:28 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:09:30 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (0.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2016-05-01 19:09:30 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:09:31 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 11ms (Views: 11.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2016-05-01 19:09:31 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:09:57 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (0.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (16.6ms)
+Completed 200 OK in 18ms (Views: 17.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2016-05-01 19:09:58 -0300
+
+
+Started GET "/todos/new" for 127.0.0.1 at 2016-05-01 19:10:00 -0300
+Processing by TodosController#new as HTML
+  Rendered todos/_form.html.erb (63.0ms)
+  Rendered todos/new.html.erb within layouts/application (66.0ms)
+Completed 200 OK in 71ms (Views: 70.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/todos/assets/application.css" for 127.0.0.1 at 2016-05-01 19:10:01 -0300
+
+ActionController::RoutingError (No route matches [GET] "/todos/assets/application.css"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (82.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (34.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (75.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:10:05 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2016-05-01 19:10:05 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:10:14 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (1.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 11ms (Views: 9.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2016-05-01 19:10:15 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:10:48 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (0.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 41ms (Views: 25.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2016-05-01 19:10:49 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:11:25 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 23ms (Views: 21.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2016-05-01 19:11:25 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:11:33 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (0.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 9ms (Views: 9.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2016-05-01 19:11:33 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:11:42 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 7ms (Views: 7.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2016-05-01 19:11:42 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:12:25 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (1.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2016-05-01 19:12:25 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:12:55 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (1.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 11ms (Views: 10.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css.sass" for 127.0.0.1 at 2016-05-01 19:12:55 -0300
+
+ExecJS::RuntimeError (CssSyntaxError: /C:/Users/Emmanuel/Desktop/todo_app/app/assets/stylesheets/application.css.sass:14:2: Unknown word
+ */
+ *
+ ^
+ *):
+  apply.from (eval at <anonymous> (C:\Users\Emmanuel\AppData\Local\Temp\execjs20160501-4472-ccc93njs:29172:8), <anonymous>:1:39)
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (47.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (36.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (77.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:13:21 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (0.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css.sass" for 127.0.0.1 at 2016-05-01 19:13:21 -0300
+
+ExecJS::RuntimeError (CssSyntaxError: /C:/Users/Emmanuel/Desktop/todo_app/app/assets/stylesheets/application.css.sass:21:2: Unknown word
+ *   background-color: red;
+ * } */
+ ^
+):
+  apply.from (eval at <anonymous> (C:\Users\Emmanuel\AppData\Local\Temp\execjs20160501-4472-1vn74m0js:29172:8), <anonymous>:1:39)
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (35.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (33.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (116.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:13:32 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (1.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 9ms (Views: 7.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2016-05-01 19:13:32 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:13:52 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (0.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 9ms (Views: 9.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2016-05-01 19:13:52 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:14:14 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (1.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 8ms (Views: 6.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2016-05-01 19:14:14 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:14:40 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (0.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 10ms (Views: 9.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2016-05-01 19:14:41 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:14:52 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 8ms (Views: 8.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2016-05-01 19:14:52 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:14:54 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (0.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 10ms (Views: 9.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2016-05-01 19:14:55 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:15:20 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (1.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2016-05-01 19:15:21 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:15:38 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (0.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 8ms (Views: 8.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2016-05-01 19:15:38 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:16:42 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 13ms (Views: 12.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2016-05-01 19:16:43 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:20:27 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (0.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css.sass" for 127.0.0.1 at 2016-05-01 19:20:27 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:22:34 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (1.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (6.0ms)
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 1.0ms)
+
+ActionView::Template::Error (undefined method `stylesheet_link' for #<#<Class:0x6a97190>:0xcf9a668>):
+    2: <html>
+    3: <head>
+    4:   <title>TodoApp</title>
+    5:   <% stylesheet_link tag :all %>
+    6: </head>
+    7: <body>
+    8: 
+  app/views/layouts/application.html.erb:5:in `_app_views_layouts_application_html_erb__915350656_108828912'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (60.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (34.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (74.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:22:47 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (0.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 17ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:22:49 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (1.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:23:10 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (1.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 9ms (Views: 7.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css.sass" for 127.0.0.1 at 2016-05-01 19:23:10 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:23:58 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 21ms (Views: 20.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/stylesheets/application.css.sass" for 127.0.0.1 at 2016-05-01 19:23:59 -0300
+
+ActionController::RoutingError (No route matches [GET] "/assets/stylesheets/application.css.sass"):
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5.1) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5.1) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (14.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (82.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (36.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (81.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:24:06 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (0.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 10ms (Views: 10.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css.sass" for 127.0.0.1 at 2016-05-01 19:24:06 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:24:34 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (1.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:24:39 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (0.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 14ms (Views: 12.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:25:23 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 351ms (Views: 350.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:26:11 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (1.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 25ms (Views: 23.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:26:20 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 14ms (Views: 12.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:26:32 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (0.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:26:37 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 17ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:26:39 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (0.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 16ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:26:57 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 12ms (Views: 10.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css.sass" for 127.0.0.1 at 2016-05-01 19:26:57 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:33:13 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (1.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 16ms (Views: 13.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css.sass" for 127.0.0.1 at 2016-05-01 19:33:13 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:33:41 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (0.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 13ms (Views: 13.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css.sass" for 127.0.0.1 at 2016-05-01 19:33:41 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:33:50 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (0.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 10ms (Views: 9.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css.sass" for 127.0.0.1 at 2016-05-01 19:33:50 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:34:15 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (1.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 11ms (Views: 9.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css.sass" for 127.0.0.1 at 2016-05-01 19:34:15 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:34:27 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (0.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css.sass" for 127.0.0.1 at 2016-05-01 19:34:27 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:35:20 -0300
+Processing by TodosController#index as HTML
+  [1m[36mTodo Load (1.0ms)[0m  [1mSELECT "todos".* FROM "todos"[0m
+  Rendered todos/index.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css.sass" for 127.0.0.1 at 2016-05-01 19:35:20 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2016-05-01 19:36:05 -0300
+Processing by TodosController#index as HTML
+  [1m[35mTodo Load (0.0ms)[0m  SELECT "todos".* FROM "todos"
+  Rendered todos/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css.sass" for 127.0.0.1 at 2016-05-01 19:36:05 -0300
