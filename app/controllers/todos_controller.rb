@@ -1,12 +1,21 @@
 class TodosController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_todo, only: [:show, :edit, :update, :destroy]
 
   # GET /todos
   # GET /todos.json
   def index
-    @todos = Todo.all
+    @todos = Todo.rank(:row_order).all
   end
 
+  def update_row_order
+	@todo = Todo.find(todo_params[:todo_id])
+    @todo.row_order_position = todo_params[:row_order_position]
+    @todo.save
+
+    render nothing: true # this is a POST action, updates sent via AJAX, no view rendered
+  end
+  
   # GET /todos/1
   # GET /todos/1.json
   def show
@@ -69,6 +78,6 @@ class TodosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def todo_params
-      params.require(:todo).permit(:title, :notes)
+      params.require(:todo).permit(:title, :notes, :todo_id, :row_order_position)
     end
 end
